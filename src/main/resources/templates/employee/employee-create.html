@@ -25,6 +25,13 @@
                     <div class="form-group col-md-4">
                         <label for="firstName">First Name</label>
                         <input type="text" class="form-control" id="firstName" placeholder="Enter Your Name" th:field="*{firstName}">
+                        <!-- write an error message if the input is not valid -->
+                        <div th:if="${#fields.hasErrors('firstName')}">
+                            <!-- this div will be crated only if there is an error. If fristName has an error-->
+                            <ol>
+                                <li th:each="error : ${#fields.errors('firstName')}" th:text="${error}"></li>
+                            </ol>
+                        </div>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="lastName">Last Name</label>
